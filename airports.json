@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "scalerank": 8, "featurecla": "Airport", "type": "mid", "name": "Kona Int'l at Keahole", "abbrev": "KOA", "location": "terminal", "gps_code": "PHKO", "iata_code": "KOA", "wikipedia": "http:\/\/en.wikipedia.org\/wiki\/Kona_International_Airport", "natlscale": 10 }, "geometry": { "type": "Point", "coordinates": [ -156.040889471057682, 19.737099139944235 ] } },
+{ "type": "Feature", "properties": { "scalerank": 8, "featurecla": "Airport", "type": "mid", "name": "Lihue", "abbrev": "LIH", "location": "terminal", "gps_code": "PHLI", "iata_code": "LIH", "wikipedia": "http:\/\/en.wikipedia.org\/wiki\/Lihu'e_Airport", "natlscale": 10 }, "geometry": { "type": "Point", "coordinates": [ -159.349084290522057, 21.978124316208824 ] } },
+{ "type": "Feature", "properties": { "scalerank": 6, "featurecla": "Airport", "type": "mid", "name": "Hilo Int'l", "abbrev": "ITO", "location": "terminal", "gps_code": "PHTO", "iata_code": "ITO", "wikipedia": "http:\/\/en.wikipedia.org\/wiki\/Hilo_International_Airport", "natlscale": 20 }, "geometry": { "type": "Point", "coordinates": [ -155.039629733434907, 19.714797686866262 ] } },
+{ "type": "Feature", "properties": { "scalerank": 6, "featurecla": "Airport", "type": "mid", "name": "Kahului", "abbrev": "OGG", "location": "terminal", "gps_code": "PHOG", "iata_code": "OGG", "wikipedia": "http:\/\/en.wikipedia.org\/wiki\/Kahului_Airport", "natlscale": 20 }, "geometry": { "type": "Point", "coordinates": [ -156.437429581353399, 20.89328851511117 ] } },
+{ "type": "Feature", "properties": { "scalerank": 2, "featurecla": "Airport", "type": "major", "name": "Honolulu Int'l", "abbrev": "HNL", "location": "terminal", "gps_code": "PHNL", "iata_code": "HNL", "wikipedia": "http:\/\/en.wikipedia.org\/wiki\/Honolulu_International_Airport", "natlscale": 150 }, "geometry": { "type": "Point", "coordinates": [ -157.919783173754752, 21.332022315023991 ] } }
+]
+}
