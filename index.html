@@ -9,7 +9,7 @@
 
     <style>
     .hawaii {
-      fill: #000;
+      fill: #e5e5e5;
       stroke: #000;
       stroke-width: 0.5px;
       stoke-linecap: round;
@@ -19,6 +19,10 @@
     .airports {
       fill: #fff;
       stroke: #fff;
+   }
+   .route {
+     stroke-width: 1;
+     stroke: #000;
    }
     </style>
 </head>
@@ -30,9 +34,8 @@
       var width = 900;
       var height = 600;
 
-      var projection = d3.geo.mercator()
-         .scale(200);
-         
+      var projection = d3.geo.mercator();
+
       var svg = d3.select('#map')
          .append('svg')
          .attr('width', width)
@@ -43,10 +46,26 @@
 
       var g = svg.append('g');
 
-      function drawMap(error, hawaii, airports) {
+      var airportList = {};
 
-         svg.append('g')
+      function drawMap(error, hawaii, airports) {
+        var state = topojson.feature(hawaii, hawaii.objects.hawaii);
+
+        projection
+          .scale(1)
+          .translate([0,0]);
+
+          var bound = path.bounds(state),
+          scale = .95 / Math.max((bound[1][0] - bound[0][0]) / width, (bound[1][1] - bound[0][1]) / height),
+          trans = [(width - scale * (bound[1][0] + bound[0][0])) / 2, (height - scale * (bound[1][1] + bound[0][1])) / 2];
+
+          projection
+            .scale(scale)
+            .translate(trans);
+
+        svg.append('g')
             .attr('class', 'hawaii')
+            .attr('id', 'hawaii')
             .selectAll('path')
             .data(topojson.feature(hawaii, hawaii.objects.hawaii).features)
             .enter()
@@ -67,6 +86,27 @@
          .defer(d3.json, "hawaii.topo.json")
          .defer(d3.json, "airports.topo.json")
          .await(drawMap);
+
+      d3.csv('fare_summary.csv', function(d) {
+        return {
+          year: +d.year,
+          quarter: +d.qtr,
+          org: d.origin,
+          dest: d.dest,
+          p_haw: +d.pc_hawaiian,
+          p_aloha: +d.pc_aloha,
+          p_go: +d.pc_go,
+          p_island: +d.pc_island,
+          p_other: +d.pc_other
+        }
+      }, function(error, data) {
+        console.log('passenger data:');
+        console.log(data);
+        var route = svg.append('path')
+          .data({type: 'LineString', coordinates: [airportList[HNL], airportList[KOA]]})
+          .attr('class', 'route')
+          .attr('d', path)
+      });
 
 
    </script>
